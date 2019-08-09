@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 class Pane extends Component {
-    handleClick = () => {
-        console.log(this.props)
+    handleClick = (e) => {
+        e.preventDefault();
 
     }
 
@@ -12,7 +13,7 @@ class Pane extends Component {
         return (
             <React.Fragment>
                 <Menu borderless>
-                    <Menu.Item><Icon className="add circle" size='large' onClick={this.handleClick}></Icon></Menu.Item>
+                    <Menu.Item><Link to='/addApplication'><Icon className="add circle" size='large' ></Icon></Link></Menu.Item>
                     <Menu.Item><Icon className="add circle" size='large'></Icon></Menu.Item>
                     <Menu.Item><Icon className="add circle" size='large'></Icon></Menu.Item>
                 </Menu>

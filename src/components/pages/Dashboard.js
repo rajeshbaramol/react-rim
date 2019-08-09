@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import ApplicationList from './Application';
 import Pane from '../shell/Pane';
 
+
 // import { Container } from './styles';
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-
+        console.log(props);
     }
     render() {
         return (
