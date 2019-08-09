@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ApplicationList from './Application';
-import Pane from '../shell/Pane';
 
 
 // import { Container } from './styles';
@@ -16,7 +15,6 @@ class Dashboard extends Component {
         return (
             <div>
                 {this.props.isConformed && <div>
-                    <Pane></Pane>
                     <ApplicationList />
                 </div>}
             </div>

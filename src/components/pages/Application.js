@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { AgGridReact } from 'ag-grid-react';
+
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { getApplicationList } from '../actions/service'
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import Pane from '../shell/Pane';
+import ReactGrid from '../directives/ReactGrid';
+
 
 
 class ApplicationList extends Component {
@@ -40,23 +41,9 @@ class ApplicationList extends Component {
         })
     }
     render() {
-        return (<div className="PaneHeaders" >
-            <button onClick={this.addClick}>addClick</button>
-            <div className="ag-theme-balham"
-                style={{
-                    height: "95%",
-                    width: '100%'
-                }
-                } >
-                <AgGridReact
-                    columnDefs={this.state.columnDefs}
-                    rowData={this.state.rowData}
-                />
-
-            </div>
-            {this.state.addClick && <Pane></Pane>
-
-            }
+        return (<div>
+            {this.state.rowData && this.state.rowData.length > 0 &&
+                <ReactGrid rowData={this.state.rowData}></ReactGrid>}
         </div>
         );
     }
