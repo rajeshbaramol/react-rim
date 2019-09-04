@@ -8,7 +8,6 @@ const BreadCrumb = () => {
                 <Breadcrumb.Section link>Home</Breadcrumb.Section>
                 <Breadcrumb.Divider icon='right chevron' />
                 <Breadcrumb.Section active>Dashboard</Breadcrumb.Section>
-
             </Breadcrumb>
         </Menu>
     )
