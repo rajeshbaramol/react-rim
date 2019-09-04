@@ -15,7 +15,7 @@ class Dashboard extends Component {
         return (
             <div>
                 {this.props.isConformed && <div>
-                    <ApplicationList />
+                    <ApplicationList {...this.props} />
                 </div>}
             </div>
         )

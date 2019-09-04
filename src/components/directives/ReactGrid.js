@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 
 class ReactGrid extends Component {
     constructor(props) {
@@ -17,8 +17,9 @@ class ReactGrid extends Component {
     }
     sortcolumn = (e) => {
         let sortkey = e.target.attributes.headername.value;
+        e.target.attributes.sortCase = e.target.attributes.sortCase === "desc" ? "asc" : "desc";
         this.setState({
-            rowData: this.state.rowData.sort((a, b) => a[sortkey].toString().localeCompare(b[sortkey].toString()))
+            rowData: e.target.attributes.sortCase === "asc" ? this.state.rowData.sort((a, b) => b[sortkey].toString().localeCompare(a[sortkey].toString())) : this.state.rowData.sort((a, b) => a[sortkey].toString().localeCompare(b[sortkey].toString()))
         })
     }
 
@@ -34,18 +35,18 @@ class ReactGrid extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <Table>
                     <Table.Header>
                         <Table.Row>
                             {
                                 this.state.columnDefs &&
                                 this.state.columnDefs.map(header =>
-                                    <Table.HeaderCell headerName={header.field} onClick={this.sortcolumn}>{header.headerName}</Table.HeaderCell>)
+                                    <Table.HeaderCell headerName={header.field} onClick={this.sortcolumn} sortCase="none">{header.field} <Icon className="sort"></Icon></Table.HeaderCell>)
                             }
 
                         </Table.Row>
-                    </Table.Header >
+                    </Table.Header>
                     <Table.Body>
                         {
 
@@ -64,7 +65,7 @@ class ReactGrid extends Component {
                 </Table >
             </div >
         );
-}
+    }
 }
 
 export default ReactGrid;
